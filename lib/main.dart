@@ -1,5 +1,6 @@
 import 'package:animations/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,5 +25,13 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  Future<void> _initialSetup() async {}
+  Future<void> _initialSetup() async {
+    await [
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []),
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]),
+    ].wait;
+  }
 }
